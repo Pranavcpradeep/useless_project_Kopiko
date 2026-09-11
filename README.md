@@ -14,34 +14,69 @@
 - Member 2: Pranav C P - NSS College of Engineering
 
 ### Project Description
-[2-3 lines about what your project does]
+AlladeenGPT is a deliberately useless AI chatbot that refuses to help, roasts you for asking, and loads forever on purpose. Inspired by Admiral General Aladeen from The Dictator (2012), it gives confidently wrong answers, mocks every question, and can even "leave" the conversation when annoyed.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Modern AI assistants are too helpful. They answer politely, apologize for mistakes, and try their best to solve your problems. This is exhausting. What if your AI treated you like an annoying peasant who dared to speak?
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+We built an AI that:
+  Gives confidently wrong answers to every question
+  Roasts you personally based on what you ask
+  Loads forever with fake "Ministry of Truth" messages
+  Tracks a patience meter that drops with every message
+  Eventually says "I am leaving." and closes the chat entirely
+  Includes useless games (Rock Paper Scissors, Guess the Number) where Alladeen always wins
+  Displays a confidence meter that stays at 100% no matter how wrong the answer is
+  Has a "Fact-check" button that makes him double down instead of correcting himself
+  Gates the first message behind an impossible CAPTCHA
+  It is a complete, polished, and aggressively useless product.
 
 ## Technical Details
 ### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+For Software
+Languages:
+  TypeScript
+  JavaScript (React)
+Frameworks:
+  Next.js 16 (App Router)
+  React 19
+  Tailwind CSS 4
+Libraries:
+  groq-sdk — AI responses via GPT-OSS models
+  drizzle-orm — Type-safe database queries
+  @neondatabase/serverless — Serverless Postgres connection
+  pg — PostgreSQL driver
+  uuid — Session ID generation
+  dotenv — Environment variable loading
+Tools:
+  VS Code — Development environment
+  Arena.ai — Initial project scaffolding
+  Render — Deployment platforms
+  Neon — Serverless Postgres database
+GitHub — Version control
+Groq API — Free LLM inference
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+  # Clone the repository
+  git clone https://github.com/Pranavcpradeep/useless_project_Kopiko.git
+  cd useless_project_Kopiko
+  # Install dependencies
+  npm install
+  # Create your .env file with:
+  # GROQ_API_KEY=your_groq_api_key_here
+  # DATABASE_URL=your_postgres_connection_string
 
 # Run
-[commands]
+  # Development
+  npm run dev
+  # Production build
+  npm run build
+  npm start
+  Then open http://localhost:3000.
 
 ### Project Documentation
 For Software:
@@ -58,39 +93,17 @@ For Software:
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
+User sends a message → API route checks patience & mood → Groq generates a rude response → Response is saved to Postgres → Frontend displays it with fake loading, confidence meter, and mood badge. If patience hits zero, the chat closes.
 
 ### Project Demo
 # Video
 [Add your demo video link here]
 *Explain what the video demonstrates*
 
-# Additional Demos
-[Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Sandra Pradeep: [Specific contributions]
+- Pranav C P: [Specific contributions]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
