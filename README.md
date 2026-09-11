@@ -2,16 +2,16 @@
 
 
 
-# [Alladeen] 🎯
+# Alladeen 🎯
 
 
 ## Basic Details
-### Team Name: [Kopiko]
+### Team Name: Kopiko
 
 
 ### Team Members
-- Team Lead: [Sandra Pradeep] - [NSS College of Engineering]
-- Member 2: [Pranav C P] - [NSS College of Engineering]
+- Team Lead: Sandra Pradeep - NSS College of Engineering
+- Member 2: Pranav C P - NSS College of Engineering
 
 ### Project Description
 [2-3 lines about what your project does]
