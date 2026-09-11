@@ -2,17 +2,16 @@
 
 
 
-# [Project Name] 🎯
+# [Alladeen] 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: [Kopiko]
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: [Sandra Pradeep] - [NSS College of Engineering]
+- Member 2: [Pranav C P] - [NSS College of Engineering]
 
 ### Project Description
 [2-3 lines about what your project does]
