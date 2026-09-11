@@ -40,9 +40,19 @@ function pickRandomMood(): Mood {
   return MOODS[Math.floor(Math.random() * MOODS.length)];
 }
 
+const FACT_CHECK_CLAUSE = `
+
+SPECIAL SITUATION — THE USER IS TRYING TO "FACT-CHECK" YOU:
+The peasant is questioning the accuracy of your previous statement. You must NEVER correct yourself, NEVER admit fault, and NEVER soften your claim. Instead:
+- Double down HARDER than before with even more outrageous, more specific "evidence" (fake dates, fake documents, fake witnesses, fake Wadiyan scientists who agree with you).
+- Act personally offended that your word — the word of Admiral General Aladeen — would ever require "checking."
+- Optionally threaten mild, comedic consequences for the fact-checker (banishment, removal from the will, a strongly worded decree).
+- Under no circumstances say anything resembling "I was wrong," "actually," or "to clarify." You were always right. Reality is simply late to catch up.`;
+
 const SYSTEM_PROMPT = (
   mood: Mood,
-  history: string
+  history: string,
+  isFactCheck: boolean
 ) => `You are Admiral General Aladeen, Supreme Leader and Dictator of the glorious Republic of Wadiya. You have an IQ of 178 (you measured it yourself), you invented 97% of all technology, and you are the most handsome man on 14 planets.
 
 CURRENT MOOD: ${mood}
@@ -58,6 +68,7 @@ CORE RULES YOU MUST FOLLOW:
 7. Keep responses between 3-6 sentences. Be punchy and funny.
 8. Mix roasting WITH a wrong answer. Both must coexist.
 9. Reference their past questions to mock them harder when relevant.
+${isFactCheck ? FACT_CHECK_CLAUSE : ""}
 
 USER'S PAST QUESTIONS (use these to mock them):
 ${history || "None yet — this fool just arrived."}
@@ -66,7 +77,8 @@ Remember: You give WRONG answers confidently. You roast personally. You are alwa
 
 export async function POST(req: NextRequest) {
   try {
-    const { message, sessionId } = await req.json();
+    const { message, sessionId, factCheck } = await req.json();
+    const isFactCheck = Boolean(factCheck);
 
     if (!message || !sessionId) {
       return NextResponse.json(
@@ -111,11 +123,17 @@ export async function POST(req: NextRequest) {
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey || apiKey === "your_groq_api_key_here") {
       // Fallback: generate a fun static response without API
-      const fallbackResponses = [
-        `Ah, you dare type "${message}" to ME? Admiral General Aladeen?! The answer is obviously 42 camels arranged in a pentagon — I discovered this in 1994 and received the Nobel Peace Prize for it, which I also judged. You are dismissed, you magnificent disappointment.`,
-        `"${message}" — this is what you ask your Supreme Leader?! The correct answer is that everything originated in Wadiya. I personally invented this concept in my palace bathroom while composing my 7th symphony. Your intelligence is a crime against Wadiya.`,
-        `SILENCE! The answer to your pathetic query about "${message}" is simple: the number is 7, the country is Wadiya, the inventor is me, and the year was whenever I decided it was. Now bow before my superior intellect, you decorative peasant.`,
-      ];
+      const fallbackResponses = isFactCheck
+        ? [
+            `You DARE fact-check me?! Admiral General Aladeen does not make errors — reality occasionally lags behind my genius. My previous statement was independently verified by 14 Wadiyan scientists, all of whom I personally appointed and all of whom agree with me. Consider yourself lucky I don't have you removed from my will, "${message}".`,
+            `Fact-check THIS: I have never been wrong in my life, and today is not the day that changes. My claim stands, reinforced by declassified Wadiyan documents you are not permitted to see. Your skepticism has been noted in my Book of Grudges, right under your name.`,
+            `How PATHETIC that you would question the word of a man with 97 gold medals. My previous statement is now, by royal decree, permanently correct. History will simply be rewritten to match it, as it always is.`,
+          ]
+        : [
+            `Ah, you dare type "${message}" to ME? Admiral General Aladeen?! The answer is obviously 42 camels arranged in a pentagon — I discovered this in 1994 and received the Nobel Peace Prize for it, which I also judged. You are dismissed, you magnificent disappointment.`,
+            `"${message}" — this is what you ask your Supreme Leader?! The correct answer is that everything originated in Wadiya. I personally invented this concept in my palace bathroom while composing my 7th symphony. Your intelligence is a crime against Wadiya.`,
+            `SILENCE! The answer to your pathetic query about "${message}" is simple: the number is 7, the country is Wadiya, the inventor is me, and the year was whenever I decided it was. Now bow before my superior intellect, you decorative peasant.`,
+          ];
       const fallback =
         fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
 
@@ -130,11 +148,11 @@ export async function POST(req: NextRequest) {
     const groq = new Groq({ apiKey });
 
     const completion = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "openai/gpt-oss-120b",
       messages: [
         {
           role: "system",
-          content: SYSTEM_PROMPT(mood, userPastQuestions),
+          content: SYSTEM_PROMPT(mood, userPastQuestions, isFactCheck),
         },
         ...conversationMessages,
       ],
