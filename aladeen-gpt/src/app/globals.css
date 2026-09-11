@@ -1,36 +1,104 @@
 @import "tailwindcss";
 
-html,
-body {
-  min-height: 100%;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-body {
-  background-image:
-    radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.08), transparent 40%),
-    radial-gradient(circle at 85% 90%, rgba(122, 15, 15, 0.25), transparent 45%),
-    repeating-linear-gradient(
-      135deg,
-      rgba(212, 175, 55, 0.03) 0px,
-      rgba(212, 175, 55, 0.03) 2px,
-      transparent 2px,
-      transparent 22px
-    );
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
-::-webkit-scrollbar {
-  width: 10px;
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 10px #d4af37, 0 0 20px #d4af3755; }
+  50% { box-shadow: 0 0 20px #d4af37, 0 0 40px #d4af3788, 0 0 60px #d4af3733; }
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.5);
-  border-radius: 999px;
+@keyframes crownBounce {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
 }
 
-* {
-  scrollbar-color: rgba(212, 175, 55, 0.5) rgba(0, 0, 0, 0.3);
+@keyframes flagWave {
+  0%, 100% { transform: skewX(-2deg) scaleX(1); }
+  50% { transform: skewX(2deg) scaleX(1.02); }
+}
+
+@keyframes moodFlash {
+  0% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.animate-crown {
+  animation: crownBounce 3s ease-in-out infinite;
+}
+
+.animate-flag {
+  animation: flagWave 2s ease-in-out infinite;
+}
+
+.animate-mood {
+  animation: moodFlash 0.5s ease-out forwards;
+}
+
+.typing-dot {
+  animation: typing-dot 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #b8860b 0%, #ffd700 25%, #daa520 50%, #ffd700 75%, #b8860b 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.wadiya-border {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.wadiya-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #d4af37, #8b6914, #d4af37, #ffd700);
+  z-index: -1;
+}
+
+.scrollbar-wadiya::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-wadiya::-webkit-scrollbar-track {
+  background: #1a0a00;
+}
+.scrollbar-wadiya::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 3px;
 }

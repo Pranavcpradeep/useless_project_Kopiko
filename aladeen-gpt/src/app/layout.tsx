@@ -3,15 +3,15 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AlladeenGPT — The AI That Refuses to Help",
+  title: "AlladeenGPT — The Supreme AI Dictator",
   description:
-    "AlladeenGPT is a deliberately useless AI chatbot inspired by General Aladeen. It refuses to answer, roasts you for asking, and loads forever on purpose.",
+    "Chat with Admiral General Aladeen, the world's greatest dictator. He will insult you, give wrong answers, and make you feel magnificent about how wrong you are.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-[#0d0202] text-[#f4e7c1] antialiased">{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

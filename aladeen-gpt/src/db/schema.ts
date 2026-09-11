@@ -1,23 +1,15 @@
-import { integer, jsonb, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, serial, varchar } from "drizzle-orm/pg-core";
 
-// Every message ever spoken to (and grunted back by) His Excellency.
-export const conversations = pgTable("conversations", {
-  id: serial("id").primaryKey(),
-  sessionId: text("session_id").notNull(),
-  role: text("role").notNull(), // "user" | "assistant"
-  content: text("content").notNull(),
+export const chatSessions = pgTable("chat_sessions", {
+  id: varchar("id", { length: 128 }).primaryKey(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-// Long-term "intel" the regime keeps on every citizen (session) so it can
-// mock them with perfect recall later.
-export const sessionProfiles = pgTable("session_profiles", {
-  sessionId: text("session_id").primaryKey(),
-  nickname: text("nickname"),
-  messageCount: integer("message_count").default(0).notNull(),
-  moodLevel: integer("mood_level").default(0).notNull(),
-  patience: integer("patience").default(100).notNull(),
-  rememberedTopics: jsonb("remembered_topics").$type<string[]>().default([]).notNull(),
+export const chatMessages = pgTable("chat_messages", {
+  id: serial("id").primaryKey(),
+  sessionId: varchar("session_id", { length: 128 }).notNull(),
+  role: varchar("role", { length: 20 }).notNull(), // "user" | "assistant"
+  content: text("content").notNull(),
+  mood: varchar("mood", { length: 50 }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
