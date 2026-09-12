@@ -3,7 +3,7 @@
 
 
 # Alladeen-GPT 🎯
-
+Where every answer is wrong and every game is rigged.
 
 ## Basic Details
 ### Team Name: Kopiko
