@@ -83,14 +83,20 @@ For Software:
 
 # Screenshots (Add at least 3)
 <img width="1906" height="1016" alt="Screenshot 2026-09-12 065443" src="https://github.com/user-attachments/assets/aa1834c2-f130-4fcd-9653-44e8a3a804d5" />
-(Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+Main chat page loading, with the CAPTCHA gate ("SECURITY CHECK OF WADIYA").
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1917" height="1008" alt="Screenshot 2026-09-12 065503" src="https://github.com/user-attachments/assets/023d99b2-c0c5-43e1-a675-0059db6710b6" />
+Main chat page after passing the CAPTCHA — header with Aladeen's portrait, mood badge, voice toggle, propaganda ticker, and "Decree of the Day" banner visible. The floating 🎮 Games button is now clearly visible and clickable in the bottom-left corner.
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1907" height="1002" alt="Screenshot 2026-09-12 065527" src="https://github.com/user-attachments/assets/aadf1490-7d47-47c2-9f53-c29fcc800896" />
+Scrolled further down the main chat page, showing the intro message ("SILENCE, PEASANT!"), suggested question buttons, and the message input box. The floating 🎮 Games button (bottom-left) and plant widget (bottom-right) remain fixed on screen regardless of scroll position, confirming they're working as floating overlays.
+
+<img width="1917" height="1011" alt="Screenshot 2026-09-12 065610" src="https://github.com/user-attachments/assets/ff15fd3f-7025-4396-955c-0361ae53723f" />
+"Catch Aladeen" game loaded via the sidebar tab, showing Aladeen's portrait centered in the empty arena before any mouse movement, the "WANTED: ALIVE, SMUG, UNCATCHABLE" plaque.
+
+<img width="1917" height="1017" alt="Screenshot 2026-09-12 065631" src="https://github.com/user-attachments/assets/85535a1a-37dc-4107-b63e-b95bbb0c602c" />
+"Dodge the Dictator" game in progress. Shows Aladeen (left) and the player (right, smiley face) with hearts, bullets, sun/cloud background, and the live stats bar at the bottom.
+
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
