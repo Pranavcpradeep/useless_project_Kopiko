@@ -1,5 +1,7 @@
 "use client";
 
+import GamesSidebar from "@/components/games/GamesSidebar";
+import SadPlant from "@/components/sadPlant";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
@@ -352,9 +354,11 @@ export default function HomePage() {
   const [decree, setDecree] = useState<string | null>(null);
   const [showDecree, setShowDecree] = useState(false);
   const [factCheckingId, setFactCheckingId] = useState<string | null>(null);
+  const [gamesSidebarOpen, setGamesSidebarOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const voiceRef = useRef<SpeechSynthesisVoice | null>(null);
+  const [plantSadness, setPlantSadness] = useState(0);
 
   useEffect(() => {
     setSessionId(getSessionId());
@@ -414,6 +418,7 @@ export default function HomePage() {
       };
 
       setMessages((prev) => [...prev, userMsg]);
+      setPlantSadness((prev) => prev + 1);
       if (!isFactCheck) setInput("");
       setIsLoading(true);
       setShowIntro(false);
@@ -934,6 +939,31 @@ export default function HomePage() {
           background:
             "linear-gradient(90deg, #8b6914, #ffd700, #d4af37, #ffd700, #8b6914)",
         }}
+      />
+
+            <GamesSidebar isOpen={gamesSidebarOpen} onClose={() => setGamesSidebarOpen(false)} />
+
+      {/* Floating Games button */}
+      <button
+        type="button"
+        onClick={() => setGamesSidebarOpen(true)}
+        className="fixed bottom-6 left-6 z-30 flex flex-col items-center gap-1 px-4 py-3 rounded-2xl transition-all duration-200 hover:scale-105"
+        style={{
+          background: "linear-gradient(135deg, #1a0d00 0%, #2d1a00 100%)",
+          border: "2px solid #d4af37",
+          boxShadow: "0 0 20px #d4af3766, 0 4px 12px rgba(0,0,0,0.4)",
+        }}
+        title="Open Wadiyan Arcade"
+      >
+        <span className="text-2xl">🎮</span>
+        <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: "#ffd700" }}>
+          Games
+        </span>
+      </button>
+
+      <SadPlant
+        sadnessLevel={plantSadness}
+        onWater={() => setPlantSadness(0)}
       />
     </div>
   );
