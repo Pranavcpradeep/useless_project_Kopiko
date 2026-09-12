@@ -116,8 +116,12 @@ Scrolled further down the main chat page, showing the intro message ("SILENCE, P
 
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-User sends a message → API route checks patience & mood → Groq generates a rude response → Response is saved to Postgres → Frontend displays it with fake loading, confidence meter, and mood badge. If patience hits zero, the chat closes.
+
+Workflow
+
+
+<img width="1224" height="1285" alt="WhatsApp Image 2026-09-12 at 7 33 21 AM" src="https://github.com/user-attachments/assets/71fbeb7c-6484-45ab-9d8e-3074bb5d6ada" />
+
 
 ### Project Demo
 # Video
