@@ -61,19 +61,19 @@ Groq API — Free LLM inference
 ### Implementation
 For Software:
 # Installation
-  # Clone the repository
+ Clone the repository
   git clone https://github.com/Pranavcpradeep/useless_project_Kopiko.git
   cd useless_project_Kopiko
-  # Install dependencies
+ Install dependencies
   npm install
-  # Create your .env file with:
-  # GROQ_API_KEY=your_groq_api_key_here
-  # DATABASE_URL=your_postgres_connection_string
+ Create your .env file with:
+ GROQ_API_KEY=your_groq_api_key_here
+ DATABASE_URL=your_postgres_connection_string
 
 # Run
-  # Development
+ Development
   npm run dev
-  # Production build
+ Production build
   npm run build
   npm start
   Then open http://localhost:3000.
