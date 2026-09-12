@@ -60,7 +60,7 @@ Tools:
 
 ### Implementation
 
-The website is also deployed using render: URL https://useless-project-kopiko.onrender.com
+The website is deployed using render: URL https://useless-project-kopiko.onrender.com
 
 
 For Software:
